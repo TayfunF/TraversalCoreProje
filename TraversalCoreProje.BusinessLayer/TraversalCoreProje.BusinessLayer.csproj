@@ -8,4 +8,8 @@
     <ProjectReference Include="..\TraversalCoreProje.DataAccessLayer\TraversalCoreProje.DataAccessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+  </ItemGroup>
+
 </Project>
