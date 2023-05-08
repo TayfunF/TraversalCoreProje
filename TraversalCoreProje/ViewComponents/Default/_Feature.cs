@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TraversalCoreProje.BusinessLayer.Abstracts;
-using TraversalCoreProje.BusinessLayer.Concretes;
-using TraversalCoreProje.DataAccessLayer.Repositories;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
 
-namespace TraversalCoreProje.ViewComponents.Default
+namespace TraversalCoreProje.ViewComponents
 {
     public class _Feature : ViewComponent
     {
-        FeatureService _featureService = new FeatureService(new FeatureRepository());
+        FeatureService _featureService = new FeatureService(new EfFeatureDal());
         public IViewComponentResult Invoke()
         {
             return View(_featureService.TGetList());

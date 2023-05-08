@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TraversalCoreProje.BusinessLayer.Concretes;
-using TraversalCoreProje.DataAccessLayer.Abstract;
-using TraversalCoreProje.DataAccessLayer.Repositories;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
 
-namespace TraversalCoreProje.ViewComponents.Default
+namespace TraversalCoreProje.ViewComponents
 {
     public class _PopularDestinations : ViewComponent
     {
-        DestinationService destinationService = new DestinationService(new DestinationRepository());
+        DestinationService destinationService = new DestinationService(new EfDestinationDal());
         public IViewComponentResult Invoke()
         {
             return View(destinationService.TGetList());

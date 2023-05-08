@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.BusinessLayer.Abstracts;
-using TraversalCoreProje.DataAccessLayer.Abstract;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.Concretes
+namespace TraversalCoreProje.BusinessLayer
 {
     public class DestinationService : IDestinationService
     {
-        IDestinationRepository _destinationRepository;
-        public DestinationService(IDestinationRepository destinationRepository)
+        IDestinationDal _destinationDal;
+        public DestinationService(IDestinationDal destinationDal)
         {
-            _destinationRepository = destinationRepository;
+            _destinationDal = destinationDal;
         }
 
         public void TAdd(Destination t)
         {
-            _destinationRepository.Insert(t);
+            _destinationDal.Insert(t);
         }
 
         public void TDelete(Destination t)
         {
-            _destinationRepository.Delete(t);
+            _destinationDal.Delete(t);
         }
 
         public Destination TGetById(int id)
         {
-            return _destinationRepository.GetById(id);
+            return _destinationDal.GetById(id);
         }
 
         public List<Destination> TGetList()
         {
-            return _destinationRepository.GetList();
+            return _destinationDal.GetList();
         }
 
         public void TUpdate(Destination t)
         {
-            _destinationRepository.Update(t);
+            _destinationDal.Update(t);
         }
     }
 }

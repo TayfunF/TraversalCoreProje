@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.Abstracts
+namespace TraversalCoreProje.BusinessLayer
 {
     public interface IGuideService : IGenericService<Guide>
     {

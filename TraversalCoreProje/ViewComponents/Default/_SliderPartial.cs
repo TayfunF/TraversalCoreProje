@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalCoreProje.ViewComponents.Default
+namespace TraversalCoreProje.ViewComponents
 {
     public class _SliderPartial : ViewComponent
     {

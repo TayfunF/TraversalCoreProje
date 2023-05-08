@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.DataAccessLayer.Abstract;
-using TraversalCoreProje.DataAccessLayer.Concrete;
+using TraversalCoreProje.DataAccessLayer;
 
-namespace TraversalCoreProje.DataAccessLayer.Repositories
+namespace TraversalCoreProje.DataAccessLayer
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         public void Delete(T t)
         {
@@ -27,6 +27,12 @@ namespace TraversalCoreProje.DataAccessLayer.Repositories
         {
             using AppDbContext _context = new AppDbContext();
             return _context.Set<T>().ToList();
+        }
+
+        public List<T> GetListByFilter(Expression<Func<T, bool>> filter)
+        {
+            using AppDbContext _context = new AppDbContext();
+            return _context.Set<T>().Where(filter).ToList();
         }
 
         public void Insert(T t)

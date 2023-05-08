@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.BusinessLayer.Abstracts;
-using TraversalCoreProje.DataAccessLayer.Abstract;
-using TraversalCoreProje.DataAccessLayer.Repositories;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.Concretes
+namespace TraversalCoreProje.BusinessLayer
 {
     public class FeatureService : IFeatureService
     {
-        IFeatureRepository _featureRepository;
+        IFeatureDal _featureDal;
 
-        public FeatureService(IFeatureRepository featureRepository)
+        public FeatureService(IFeatureDal featureDal)
         {
-            _featureRepository = featureRepository;
+            _featureDal = featureDal;
         }
 
         public void TAdd(Feature t)
         {
-            _featureRepository.Insert(t);
+            _featureDal.Insert(t);
         }
 
         public void TDelete(Feature t)
         {
-            _featureRepository.Delete(t);
+            _featureDal.Delete(t);
         }
 
         public Feature TGetById(int id)
@@ -36,12 +35,12 @@ namespace TraversalCoreProje.BusinessLayer.Concretes
 
         public List<Feature> TGetList()
         {
-            return _featureRepository.GetList();
+            return _featureDal.GetList();
         }
 
         public void TUpdate(Feature t)
         {
-            _featureRepository.Update(t);
+            _featureDal.Update(t);
         }
     }
 }

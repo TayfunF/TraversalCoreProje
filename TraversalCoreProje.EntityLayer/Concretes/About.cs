@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TraversalCoreProje.EntityLayer.Concrete
+namespace TraversalCoreProje.EntityLayer
 {
     public class About
     {

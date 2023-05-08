@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.BusinessLayer.Abstracts;
-using TraversalCoreProje.DataAccessLayer.Repositories;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.Concretes
+namespace TraversalCoreProje.BusinessLayer
 {
     public class SubAboutService : ISubAboutService
     {
-        SubAboutRepository _subAboutRepository;
+        ISubAboutDal _subAboutDal;
 
-        public SubAboutService(SubAboutRepository subAboutRepository)
+        public SubAboutService(ISubAboutDal subAboutDal)
         {
-            _subAboutRepository = subAboutRepository;
+            _subAboutDal = subAboutDal;
         }
 
         public void TAdd(SubAbout t)
         {
-            _subAboutRepository.Insert(t);
+            _subAboutDal.Insert(t);
         }
 
         public void TDelete(SubAbout t)
         {
-            _subAboutRepository.Delete(t);
+            _subAboutDal.Delete(t);
         }
 
         public SubAbout TGetById(int id)
@@ -35,12 +35,12 @@ namespace TraversalCoreProje.BusinessLayer.Concretes
 
         public List<SubAbout> TGetList()
         {
-            return _subAboutRepository.GetList();
+            return _subAboutDal.GetList();
         }
 
         public void TUpdate(SubAbout t)
         {
-            _subAboutRepository.Update(t);
+            _subAboutDal.Update(t);
         }
     }
 }

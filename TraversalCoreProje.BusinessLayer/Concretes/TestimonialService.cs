@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.BusinessLayer.Abstracts;
-using TraversalCoreProje.DataAccessLayer.Abstract;
-using TraversalCoreProje.DataAccessLayer.Repositories;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.Concretes
+namespace TraversalCoreProje.BusinessLayer
 {
     public class TestimonialService : ITestimonialService
     {
-        ITestimonialRepository _testimonialRepository;
+        ITestimonialDal _testimonialDal;
 
-        public TestimonialService(ITestimonialRepository testimonialRepository)
+        public TestimonialService(ITestimonialDal testimonialDal)
         {
-            _testimonialRepository = testimonialRepository;
+            _testimonialDal = testimonialDal;
         }
 
         public void TAdd(Testimonial t)
@@ -36,7 +35,7 @@ namespace TraversalCoreProje.BusinessLayer.Concretes
 
         public List<Testimonial> TGetList()
         {
-            return _testimonialRepository.GetList();
+            return _testimonialDal.GetList();
         }
 
         public void TUpdate(Testimonial t)

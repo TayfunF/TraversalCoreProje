@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using TraversalCoreProje.DataAccessLayer.Concrete;
+using TraversalCoreProje.DataAccessLayer;
 
-namespace TraversalCoreProje.ViewComponents.Default
+namespace TraversalCoreProje.ViewComponents
 {
     public class _Statistics : ViewComponent
     {

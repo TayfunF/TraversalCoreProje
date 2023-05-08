@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.EntityLayer;
 
-namespace TraversalCoreProje.BusinessLayer.ValidationRules
+namespace TraversalCoreProje.BusinessLayer
 {
     public class AboutValidator : AbstractValidator<About>
     {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TraversalCoreProje.BusinessLayer.Concretes;
-using TraversalCoreProje.DataAccessLayer.Repositories;
-using TraversalCoreProje.EntityLayer.Concrete;
+using TraversalCoreProje.BusinessLayer;
+using TraversalCoreProje.DataAccessLayer;
+using TraversalCoreProje.EntityLayer;
 
 namespace TraversalCoreProje.Controllers
 {
     public class DestinationController : Controller
     {
-        DestinationService _destinationService = new DestinationService(new DestinationRepository());
+        DestinationService _destinationService = new DestinationService(new EfDestinationDal());
         public IActionResult Index()
         {
             return View(_destinationService.TGetList());
@@ -16,6 +16,7 @@ namespace TraversalCoreProje.Controllers
         [HttpGet]
         public IActionResult DestinationDetails(int id)
         {
+            ViewBag.Id = id;
             return View(_destinationService.TGetById(id));
         }
 
