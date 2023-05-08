@@ -17,6 +17,12 @@ namespace TraversalCoreProje.DataAccessLayer.Repositories
             _context.SaveChanges();
         }
 
+        public T GetById(int id)
+        {
+            using AppDbContext _context = new AppDbContext();
+            return _context.Set<T>().Find(id);
+        }
+
         public List<T> GetList()
         {
             using AppDbContext _context = new AppDbContext();
@@ -26,7 +32,7 @@ namespace TraversalCoreProje.DataAccessLayer.Repositories
         public void Insert(T t)
         {
             using AppDbContext _context = new AppDbContext();
-            _context.Add(t);            
+            _context.Add(t);
         }
 
         public void Update(T t)

@@ -29,7 +29,7 @@ namespace TraversalCoreProje.BusinessLayer.Concretes
 
         public Destination TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _destinationRepository.GetById(id);
         }
 
         public List<Destination> TGetList()
