@@ -39,6 +39,7 @@ namespace TraversalCoreProje.DataAccessLayer
         {
             using AppDbContext _context = new AppDbContext();
             _context.Add(t);
+            _context.SaveChanges();
         }
 
         public void Update(T t)
