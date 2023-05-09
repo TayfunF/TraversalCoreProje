@@ -42,7 +42,7 @@ namespace TraversalCoreProje.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn", "Login");
+                    return RedirectToAction("SignIn", "Profile", new { area = "Member" });
                 }
                 else
                 {
