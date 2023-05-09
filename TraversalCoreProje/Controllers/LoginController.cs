@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 using TraversalCoreProje.EntityLayer;
 using TraversalCoreProje.Models;
@@ -11,10 +12,11 @@ namespace TraversalCoreProje.Controllers
     public class LoginController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
-
-        public LoginController(UserManager<AppUser> userManager)
+        private readonly SignInManager<AppUser> _signInManager;
+        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -57,6 +59,28 @@ namespace TraversalCoreProje.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignIn(UserSignInVM userSignInVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(userSignInVM.Username, userSignInVM.Password, false, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Destination");
+                }
+                else
+                {
+                    return RedirectToAction("SigIn", "Login");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Kullanıcı adı ya da şifre hatalı");
+            }
             return View();
         }
     }
