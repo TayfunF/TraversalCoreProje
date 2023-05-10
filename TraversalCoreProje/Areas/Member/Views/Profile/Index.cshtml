@@ -6,18 +6,15 @@
 }
 
 <h3>Profil Düzenleme Sayfası</h3>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     @Html.Label("Adınız")
     <input type="text" asp-for="Name" class="form-control" />
     <br />
     @Html.Label("Soyadınız")
     <input type="text" asp-for="Surname" class="form-control" />
     <br />
-    @Html.Label("E-posta Adresiniz")
-    <input type="email" asp-for="Email" class="form-control" />
-    <br />
-    @Html.Label("Telefon Numaranız")
-    <input type="text" asp-for="Phone" class="form-control" />
+    @Html.Label("Kullanıcı Adınız")
+    <input type="text" asp-for="UserName" class="form-control" readonly />
     <br />
     @Html.Label("Şifreniz")
     <input type="password" asp-for="Password" class="form-control" />
@@ -25,7 +22,18 @@
     @Html.Label("Şifre Tekrarı")
     <input type="password" asp-for="ConfirmPassword" class="form-control" />
     <br />
-
+    @Html.Label("E-posta Adresiniz")
+    <input type="email" asp-for="Email" class="form-control" />
+    <br />
+    @Html.Label("Telefon Numaranız")
+    <input type="text" asp-for="PhoneNumber" class="form-control" />
+    <br />
+    <div class="form-group">
+        <label>Resim Seçiniz</label>
+        <input type="file" asp-for="Image"/>
+    </div>
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
 </form>
 
 
